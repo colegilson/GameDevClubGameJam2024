@@ -69,4 +69,5 @@ offset_bottom = 630.0
 theme_override_font_sizes/font_size = 49
 text = "MAIN MENU"
 
+[connection signal="pressed" from="level 1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="main menu" to="." method="_on_main_menu_pressed"]
