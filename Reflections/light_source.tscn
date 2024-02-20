@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://d6aqeidmrmo6"]
+
+[ext_resource type="Script" path="res://light_source.gd" id="1_5upqt"]
+[ext_resource type="Texture2D" uid="uid://nxkc6p1m7djh" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_1.png" id="1_ccdl2"]
+[ext_resource type="Texture2D" uid="uid://cljo3710f4gqe" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_1_1.png" id="2_ye4hb"]
+[ext_resource type="Texture2D" uid="uid://c70yt51kofxhv" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_1_2.png" id="3_aik7y"]
+[ext_resource type="Texture2D" uid="uid://cn1oyiuhdy672" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_1_3.png" id="4_riyat"]
+[ext_resource type="Texture2D" uid="uid://eopq126mp3jf" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_1_4.png" id="5_6o38h"]
+[ext_resource type="Texture2D" uid="uid://ccimi4x8w63x2" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_2.png" id="6_n4dv8"]
+[ext_resource type="Texture2D" uid="uid://cmkwul3f51jma" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_3.png" id="7_ep8cp"]
+[ext_resource type="Texture2D" uid="uid://cw2aqpguysk4p" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_4.png" id="8_3nj4x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_myo87"]
+radius = 8.0
+height = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tcy5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ccdl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ye4hb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aik7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_riyat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6o38h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n4dv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ep8cp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3nj4x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="light source" type="CharacterBody2D"]
+script = ExtResource("1_5upqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_myo87")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(1.1875, 1.3125)
+sprite_frames = SubResource("SpriteFrames_tcy5j")
+frame = 7
+frame_progress = 1.0
