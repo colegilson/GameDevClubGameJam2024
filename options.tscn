@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ymfjmj6rxly"]
+
+[ext_resource type="Script" path="res://options.gd" id="1_phcj7"]
+
+[node name="options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_phcj7")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 198.0
+offset_right = 857.0
+offset_bottom = 268.0
+step = 0.5
+rounded = true
+
+[node name="HSlider2" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 288.0
+offset_right = 854.0
+offset_bottom = 396.0
+step = 0.5
+rounded = true
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 302.0
+offset_right = 351.0
+offset_bottom = 370.0
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 39
+text = "MUSIC:"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 195.0
+offset_right = 364.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 39
+text = "SOUND EFFECTS:"
+editable = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 435.0
+offset_right = 1007.0
+offset_bottom = 615.0
+theme_override_font_sizes/font_size = 126
+text = "MAIN MENU"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
