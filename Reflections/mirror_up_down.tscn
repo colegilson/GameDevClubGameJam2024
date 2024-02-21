@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://botfbmp48m32l"]
+
+[ext_resource type="Script" path="res://mirror_up_down.gd" id="1_axlec"]
+[ext_resource type="Texture2D" uid="uid://rx1frotesn6d" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.49.21_PM-removebg-preview.png" id="2_73nsr"]
+[ext_resource type="Texture2D" uid="uid://bug4qvfqsy6y3" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.49.42_PM-removebg-preview.png" id="3_rta6m"]
+[ext_resource type="Texture2D" uid="uid://dinrxwrd7hesb" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.48.40_PM-removebg-preview.png" id="4_ov3vj"]
+[ext_resource type="Texture2D" uid="uid://bwybn4b7tkc35" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_5.41.16_PM-removebg-preview.png" id="5_vlvca"]
+[ext_resource type="Script" path="res://RayCast2D.gd" id="6_cdj12"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_myo87"]
+radius = 8.0
+height = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ywqdo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_73nsr")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rta6m")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ov3vj")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vlvca")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_nxx8k"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5k5bm"]
+gradient = SubResource("Gradient_nxx8k")
+fill = 1
+
+[node name="mirror ud" type="CharacterBody2D"]
+z_index = -5
+script = ExtResource("1_axlec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_myo87")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0540196, 0.0553356)
+sprite_frames = SubResource("SpriteFrames_ywqdo")
+animation = &"up"
+
+[node name="Button" type="Button" parent="."]
+show_behind_parent = true
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 5.0
+offset_bottom = 4.0
+toggle_mode = true
+
+[node name="light up" type="PointLight2D" parent="."]
+z_index = -3
+position = Vector2(-2.00573, -441.539)
+rotation = -1.5708
+scale = Vector2(13.79, 1)
+color = Color(0.815686, 0.862745, 0, 1)
+energy = 5.0
+blend_mode = 2
+range_z_min = -2
+texture = SubResource("GradientTexture2D_5k5bm")
+
+[node name="RayCast2D" type="RayCast2D" parent="light up"]
+position = Vector2(-31.906, 0)
+target_position = Vector2(76.972, 2.00576)
+script = ExtResource("6_cdj12")
+
+[node name="light down" type="PointLight2D" parent="."]
+position = Vector2(-1.8879, 504.835)
+rotation = 1.5708
+scale = Vector2(15.737, 1)
+color = Color(0.815686, 0.862745, 0, 1)
+energy = 5.0
+blend_mode = 2
+range_z_min = -2
+texture = SubResource("GradientTexture2D_5k5bm")
+
+[node name="RayCast2D" type="RayCast2D" parent="light down"]
+position = Vector2(-31.9059, 1.14441e-05)
+target_position = Vector2(43.1638, -1.88792)
+script = ExtResource("6_cdj12")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

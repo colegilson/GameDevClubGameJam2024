@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmgpfx6rwagv6"]
+
+[ext_resource type="Script" path="res://light_source.gd" id="1_47g8b"]
+[ext_resource type="Texture2D" uid="uid://bug4qvfqsy6y3" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.49.42_PM-removebg-preview.png" id="2_g1uo3"]
+[ext_resource type="Texture2D" uid="uid://rx1frotesn6d" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.49.21_PM-removebg-preview.png" id="3_ns03t"]
+[ext_resource type="Texture2D" uid="uid://c5vwhhp486kp2" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/orb-removebg-preview.png" id="4_745gw"]
+[ext_resource type="Texture2D" uid="uid://dinrxwrd7hesb" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.48.40_PM-removebg-preview.png" id="5_p3hg1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_myo87"]
+radius = 8.0
+height = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ywqdo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ns03t")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g1uo3")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_p3hg1")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_745gw")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="light source" type="CharacterBody2D"]
+script = ExtResource("1_47g8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_myo87")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0540196, 0.0553356)
+sprite_frames = SubResource("SpriteFrames_ywqdo")
+animation = &"left"
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d6aqeidmrmo6"]
+[gd_scene load_steps=15 format=3 uid="uid://d6aqeidmrmo6"]
 
 [ext_resource type="Script" path="res://light_source.gd" id="1_5upqt"]
 [ext_resource type="Texture2D" uid="uid://nxkc6p1m7djh" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_1.png" id="1_ccdl2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ccimi4x8w63x2" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_2.png" id="6_n4dv8"]
 [ext_resource type="Texture2D" uid="uid://cmkwul3f51jma" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_3.png" id="7_ep8cp"]
 [ext_resource type="Texture2D" uid="uid://cw2aqpguysk4p" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_4.png" id="8_3nj4x"]
+[ext_resource type="Script" path="res://RayCast2D.gd" id="10_k1emg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_myo87"]
 radius = 8.0
@@ -46,6 +47,17 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_l2qhm"]
+offsets = PackedFloat32Array(0, 0.318182)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bknn0"]
+gradient = SubResource("Gradient_l2qhm")
+fill = 1
+fill_from = Vector2(1, 0.474359)
+fill_to = Vector2(1, 100)
+repeat = 2
+
 [node name="light source" type="CharacterBody2D"]
 script = ExtResource("1_5upqt")
 
@@ -58,3 +70,20 @@ scale = Vector2(1.1875, 1.3125)
 sprite_frames = SubResource("SpriteFrames_tcy5j")
 frame = 7
 frame_progress = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 1
+position = Vector2(-1.52588e-05, -7.62939e-06)
+scale = Vector2(41.706, 22.801)
+color = Color(0.815686, 0.862745, 0, 1)
+energy = 5.0
+blend_mode = 2
+range_z_min = -2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_bknn0")
+texture_scale = 0.55
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(2, -179)
+collide_with_areas = true
+script = ExtResource("10_k1emg")
