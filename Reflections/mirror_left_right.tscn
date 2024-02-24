@@ -57,6 +57,7 @@ z_index = -5
 script = ExtResource("1_haabm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_myo87")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -73,32 +74,36 @@ offset_bottom = 5.0
 toggle_mode = true
 
 [node name="light right" type="PointLight2D" parent="."]
+visible = false
 z_index = -3
-position = Vector2(520, 0)
-scale = Vector2(15.949, 1)
+position = Vector2(250.816, 0)
+scale = Vector2(7.81825, 1)
 color = Color(0.815686, 0.862745, 0, 1)
-energy = 5.0
-blend_mode = 2
 range_z_min = -2
 texture = SubResource("GradientTexture2D_ml8cc")
 
-[node name="RayCast2D" type="RayCast2D" parent="light right"]
+[node name="rayright" type="RayCast2D" parent="light right"]
+visible = false
 position = Vector2(-32, 0)
-target_position = Vector2(43.2233, 0)
+rotation = 1.5708
+enabled = false
+target_position = Vector2(0, -414)
 script = ExtResource("6_hx2i7")
 
 [node name="light left" type="PointLight2D" parent="."]
-position = Vector2(-347, 0)
-scale = Vector2(10.581, 1)
+visible = false
+position = Vector2(-18.704, 0)
+scale = Vector2(0.32175, 1)
 color = Color(0.815686, 0.862745, 0, 1)
-energy = 5.0
-blend_mode = 2
 range_z_min = -1
 texture = SubResource("GradientTexture2D_ml8cc")
 
-[node name="RayCast2D" type="RayCast2D" parent="light left"]
-position = Vector2(32, 0)
-target_position = Vector2(-35.7804, -3)
+[node name="rayleft" type="RayCast2D" parent="light left"]
+visible = false
+position = Vector2(61.2401, 1)
+rotation = 1.5708
+enabled = false
+target_position = Vector2(0, 3505.83)
 script = ExtResource("6_hx2i7")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

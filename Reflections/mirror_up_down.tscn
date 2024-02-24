@@ -73,34 +73,37 @@ offset_bottom = 4.0
 toggle_mode = true
 
 [node name="light up" type="PointLight2D" parent="."]
+visible = false
 z_index = -3
 position = Vector2(-2.00573, -441.539)
 rotation = -1.5708
 scale = Vector2(13.79, 1)
 color = Color(0.815686, 0.862745, 0, 1)
-energy = 5.0
-blend_mode = 2
 range_z_min = -2
 texture = SubResource("GradientTexture2D_5k5bm")
 
-[node name="RayCast2D" type="RayCast2D" parent="light up"]
-position = Vector2(-31.906, 0)
-target_position = Vector2(76.972, 2.00576)
+[node name="rayup" type="RayCast2D" parent="light up"]
+visible = false
+position = Vector2(-32.0188, 2.00413)
+enabled = false
+target_position = Vector2(656, 0)
 script = ExtResource("6_cdj12")
 
 [node name="light down" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(-1.8879, 504.835)
 rotation = 1.5708
 scale = Vector2(15.737, 1)
 color = Color(0.815686, 0.862745, 0, 1)
-energy = 5.0
-blend_mode = 2
 range_z_min = -2
 texture = SubResource("GradientTexture2D_5k5bm")
 
-[node name="RayCast2D" type="RayCast2D" parent="light down"]
-position = Vector2(-31.9059, 1.14441e-05)
-target_position = Vector2(43.1638, -1.88792)
+[node name="raydown" type="RayCast2D" parent="light down"]
+visible = false
+position = Vector2(-32.0795, -1.88607)
+rotation = -1.5708
+enabled = false
+target_position = Vector2(0, 609)
 script = ExtResource("6_cdj12")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

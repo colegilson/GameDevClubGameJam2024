@@ -10,4 +10,8 @@ func _ready():
 func _process(_delta):
 		if is_colliding():
 			var collider = get_collider()
-			collider.show()
+			if get_parent().get_parent().is_visible():
+				collider.show()
+			else:
+				collider.hide()
+			

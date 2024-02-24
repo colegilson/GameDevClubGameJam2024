@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhd3cp0vqbb2o"]
+
+[ext_resource type="Texture2D" uid="uid://tq5et5wxl4d" path="res://2D Pixel Dungeon Asset Pack/interface/winn.png" id="1_o6c7r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_05bod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o6c7r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i263"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.045, 0.045)
+sprite_frames = SubResource("SpriteFrames_05bod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2i263")

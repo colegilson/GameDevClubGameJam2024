@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://vij8n1lxsc1u"]
+
+[ext_resource type="Script" path="res://how_to.gd" id="1_ma25f"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_7rh6c"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_pcn0j"]
+events = [SubResource("InputEventKey_7rh6c")]
+
+[node name="how_to" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ma25f")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.402
+anchor_bottom = 0.526
+offset_right = 695.896
+offset_bottom = 210.152
+theme_override_font_sizes/font_size = 41
+text = "GOAL: YOUR OBJECTIVE IS TO USE THE LIGHT PROVIDED 
+BY THE CANDLESTICK (LOCATED CENTRALLY AT THE 
+BOTTOM OF THE LEVEL) TO REFLECT OFF OF THE ORBS 
+THROUGHOUT THE LEVEL TO FIND AND OPEN THE 
+TRAPDOOR WHICH LEADS TO THE NEXT LEVEL
+
+CONTROLS: CLICK ON AN ORB TO CHANGE ITS DIRECTION 
+OF LIGHT,  CLICK ON THE LUMINATED TRAPDOOR TO
+ACCEPT VICTORY"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 554.0
+offset_right = 1147.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_pcn0j")
+text = "LEVEL 1
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

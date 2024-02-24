@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ccimi4x8w63x2" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_2.png" id="6_n4dv8"]
 [ext_resource type="Texture2D" uid="uid://cmkwul3f51jma" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_3.png" id="7_ep8cp"]
 [ext_resource type="Texture2D" uid="uid://cw2aqpguysk4p" path="res://2D Pixel Dungeon Asset Pack/items and trap_animation/torch/candlestick_2_4.png" id="8_3nj4x"]
-[ext_resource type="Script" path="res://RayCast2D.gd" id="10_k1emg"]
+[ext_resource type="Script" path="res://RayCast2D.gd" id="10_x0gx2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_myo87"]
 radius = 8.0
@@ -76,6 +76,23 @@ z_index = 1
 position = Vector2(-1.52588e-05, -7.62939e-06)
 scale = Vector2(41.706, 22.801)
 color = Color(0.815686, 0.862745, 0, 1)
+energy = 2.0
+blend_mode = 2
+range_z_min = -2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_bknn0")
+texture_scale = 0.55
+
+[node name="RayCast2D" type="RayCast2D" parent="PointLight2D"]
+rotation = 3.14159
+scale = Vector2(1, 0.25)
+script = ExtResource("10_x0gx2")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+z_index = 1
+position = Vector2(-1.52588e-05, -7.62939e-06)
+scale = Vector2(41.706, 22.801)
+color = Color(0.815686, 0.862745, 0, 1)
 energy = 5.0
 blend_mode = 2
 range_z_min = -2
@@ -83,7 +100,24 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_bknn0")
 texture_scale = 0.55
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(2, -179)
-collide_with_areas = true
-script = ExtResource("10_k1emg")
+[node name="RayCast2D" type="RayCast2D" parent="PointLight2D2"]
+rotation = -1.5708
+scale = Vector2(1, 0.25)
+script = ExtResource("10_x0gx2")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+z_index = 1
+position = Vector2(-1.52588e-05, -7.62939e-06)
+scale = Vector2(41.706, 22.801)
+color = Color(0.815686, 0.862745, 0, 1)
+energy = 5.0
+blend_mode = 2
+range_z_min = -2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_bknn0")
+texture_scale = 0.55
+
+[node name="RayCast2D" type="RayCast2D" parent="PointLight2D3"]
+rotation = 1.5708
+scale = Vector2(1, 0.25)
+script = ExtResource("10_x0gx2")
