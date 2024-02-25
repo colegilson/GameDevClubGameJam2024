@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8ymfjmj6rxly"]
+[gd_scene load_steps=3 format=3 uid="uid://8ymfjmj6rxly"]
 
 [ext_resource type="Script" path="res://options.gd" id="1_phcj7"]
+[ext_resource type="AudioStream" uid="uid://ds5bycfvth2op" path="res://Sounds/RuneScape old Theme.mp3" id="2_6p30u"]
 
 [node name="options" type="Control"]
 layout_mode = 3
@@ -11,64 +12,71 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_phcj7")
 
-[node name="HSlider" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 385.0
-offset_top = 198.0
-offset_right = 857.0
-offset_bottom = 268.0
-step = 0.5
-rounded = true
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_6p30u")
+volume_db = -25.0
+autoplay = true
+bus = &"music"
 
-[node name="HSlider2" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 382.0
-offset_top = 288.0
-offset_right = 854.0
-offset_bottom = 396.0
-step = 0.5
-rounded = true
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="TextEdit" type="TextEdit" parent="."]
-layout_mode = 0
-offset_left = 199.0
-offset_top = 302.0
-offset_right = 351.0
-offset_bottom = 370.0
-theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 39
-text = "MUSIC:"
-editable = false
-context_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -378.0
+offset_right = 378.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TextEdit2" type="TextEdit" parent="."]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 195.0
-offset_right = 364.0
-offset_bottom = 266.0
-theme_override_font_sizes/font_size = 39
-text = "SOUND EFFECTS:"
-editable = false
-shortcut_keys_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 251.0
-offset_top = 435.0
-offset_right = 1007.0
-offset_bottom = 615.0
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 126
 text = "MAIN MENU"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+columns = 2
+
+[node name="music" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "MUSIC"
+
+[node name="musicslider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="sfx" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "SOUND EFFECTS"
+
+[node name="sfxslider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/GridContainer/musicslider" to="." method="_on_musicslider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/GridContainer/sfxslider" to="." method="_on_sfxslider_value_changed"]

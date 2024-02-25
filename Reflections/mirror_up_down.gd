@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var sfx = $Button/AudioStreamPlayer2D
+
 func _ready():
 	
 	if get_node("Button").is_visible():
@@ -17,6 +19,8 @@ func _ready():
 		
 func _on_button_toggled(toggled_on):
 	if get_node("AnimatedSprite2D").is_visible():
+		
+		sfx.play()
 		
 		if toggled_on == true:
 			

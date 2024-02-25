@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxj70pwtsxbru"]
+[gd_scene load_steps=12 format=3 uid="uid://dxj70pwtsxbru"]
 
 [ext_resource type="Script" path="res://mirror_left_right.gd" id="1_haabm"]
 [ext_resource type="Texture2D" uid="uid://rx1frotesn6d" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.49.21_PM-removebg-preview.png" id="2_ijnep"]
 [ext_resource type="Texture2D" uid="uid://bug4qvfqsy6y3" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.49.42_PM-removebg-preview.png" id="3_fyh67"]
 [ext_resource type="Texture2D" uid="uid://d1ytrrg2t2vrm" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/orb_purp.png" id="4_8pc8b"]
 [ext_resource type="Texture2D" uid="uid://bwybn4b7tkc35" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_5.41.16_PM-removebg-preview.png" id="5_f8528"]
+[ext_resource type="AudioStream" uid="uid://ddt2am2n4tndy" path="res://Sounds/Magic sound effect.mp3" id="6_8dt3d"]
 [ext_resource type="Script" path="res://RayCast2D.gd" id="6_hx2i7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_myo87"]
@@ -57,13 +58,12 @@ z_index = -5
 script = ExtResource("1_haabm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_myo87")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.0540196, 0.0553356)
 sprite_frames = SubResource("SpriteFrames_ywqdo")
-animation = &"right"
+animation = &"left"
 
 [node name="Button" type="Button" parent="."]
 show_behind_parent = true
@@ -72,6 +72,10 @@ offset_top = -4.0
 offset_right = 4.0
 offset_bottom = 5.0
 toggle_mode = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Button"]
+stream = ExtResource("6_8dt3d")
+volume_db = -30.0
 
 [node name="light right" type="PointLight2D" parent="."]
 visible = false

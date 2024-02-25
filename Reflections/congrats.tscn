@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxoepqh1tfm12"]
+[gd_scene load_steps=4 format=3 uid="uid://bxoepqh1tfm12"]
 
 [ext_resource type="Script" path="res://congrats.gd" id="1_bkgha"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_wjbgl"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_lg8bn"]
+events = [SubResource("InputEventKey_wjbgl")]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -28,6 +35,7 @@ HAVE BEATEN A LEVEL"
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 85
+shortcut = SubResource("Shortcut_lg8bn")
 text = "LEVEL SELECT "
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://botfbmp48m32l"]
+[gd_scene load_steps=12 format=3 uid="uid://botfbmp48m32l"]
 
 [ext_resource type="Script" path="res://mirror_up_down.gd" id="1_axlec"]
 [ext_resource type="Texture2D" uid="uid://rx1frotesn6d" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.49.21_PM-removebg-preview.png" id="2_73nsr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dinrxwrd7hesb" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_4.48.40_PM-removebg-preview.png" id="4_ov3vj"]
 [ext_resource type="Texture2D" uid="uid://bwybn4b7tkc35" path="res://Shikashi's Fantasy Icons Pack v2/Shikashi's Fantasy Icons Pack v2/Screenshot_2024-02-20_5.41.16_PM-removebg-preview.png" id="5_vlvca"]
 [ext_resource type="Script" path="res://RayCast2D.gd" id="6_cdj12"]
+[ext_resource type="AudioStream" uid="uid://ddt2am2n4tndy" path="res://Sounds/Magic sound effect.mp3" id="6_cmka3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_myo87"]
 radius = 8.0
@@ -71,6 +72,10 @@ offset_top = -4.0
 offset_right = 5.0
 offset_bottom = 4.0
 toggle_mode = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Button"]
+stream = ExtResource("6_cmka3")
+volume_db = -30.0
 
 [node name="light up" type="PointLight2D" parent="."]
 visible = false
